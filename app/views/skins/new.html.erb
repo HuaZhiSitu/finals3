@@ -13,26 +13,26 @@
   <% end %>
 
   <div class="field">
-    <h1 class="center-heading"> <%= form.label :name, "Skin Name" %>
+    <h1 class="center-heading2"> <%= form.label :name, "Skin Name" %>
     <%= form.text_field :name, required: true %></h1>
   </div>
 
   <div class="field">
-  <h1 class="center-heading">
+  <h1 class="center-heading2">
     <%= form.label :description, "Description" %>
     <%= form.text_area :description, required: true %>
   </h1>
   </div>
 
   <div class="field">
-  <h1 class="center-heading">
+  <h1 class="center-heading2">
     <%= form.label :image_url, "Image URL" %>
     <%= form.text_field :image_url %>
   </h1>
   </div>
 
   <div class="field">
-  <h1 class="center-heading">
+  <h1 class="center-heading2">
     <%= form.label :starting_price, "Starting Price" %>
     <%= form.number_field :starting_price, step: 0.01, required: true %>
   </h1>

@@ -1,4 +1,4 @@
-<h1>Create a New Account</h1>
+<h1 class="center-heading">Create a New Account</h1>
 
 <%= form_with(model: @user, url: "/users/create", method: :post, local: true) do |form| %>
   <% if @user.errors.any? %>
@@ -12,24 +12,26 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :username, "Username" %>
+  <div class="center-heading2">
+    <class = <%= form.label :username, "Username" %>
     <%= form.text_field :username, required: true %>
   </div>
 
-  <div class="field">
+  <div class="center-heading2">
     <%= form.label :email, "Email" %>
     <%= form.email_field :email, required: true %>
   </div>
 
-  <div class="field">
+  <div class="center-heading2">
     <%= form.label :password, "Password" %>
     <%= form.password_field :password, required: true %> <!-- Plain password -->
   </div>
 
-  <div class="actions">
+  <div class="center-heading2">
     <%= form.submit "Sign Up", class: "btn btn-primary" %>
   </div>
 <% end %>
 
+<div class="center-heading2">
 <%= link_to "Back to Home", root_path, class: "btn btn-secondary" %>
+</div>

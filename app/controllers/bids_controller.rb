@@ -1,4 +1,6 @@
 class BidsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
+  
   def new
     @skin = Skin.find_by(id: params[:skin_id])
     if @skin.nil?
@@ -9,7 +11,7 @@ class BidsController < ApplicationController
   end
 
   def create
-    @bid = Bid.new(bid_params)
+    @bid = current_user.bids.new(bid_params)
     @skin = Skin.find(params[:bid][:skin_id]) # Ensure the skin is fetched
 
     if @bid.save

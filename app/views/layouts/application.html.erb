@@ -25,9 +25,14 @@
 
   <body>
     <nav class="navbar">
-      <a href="/" class="nav-item">HomePage</a>
+      <a href="/" class="nav-item">Home Page</a>
       <a href="/skins/new" class="nav-item">Skins Upload</a>
       <a href="/users/new" class="nav-item">Sign Up</a>
+      <% if current_user != nil %>
+        <a href="/users/sign_out" class="nav-item">Sign out</a>
+      <% else %>
+        <a href="/users/sign_in" class="nav-item">Sign in</a>
+      <% end %>
       <a href="https://chatgpt.com" target="_blank" rel="noopener noreferrer" class="nav-item" >Design your own skin!</a>
     </nav>
     <%= yield %>
