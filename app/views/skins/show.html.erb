@@ -1,0 +1,60 @@
+<div class="main-content">
+  <h1><%= @the_skin.name %></h1>
+<hr>
+  <% if @the_skin.image_url.present? %>
+    <%= image_tag @the_skin.image_url, style: "max-width: 400px; display: block; margin: 0 auto;" %>
+  <% else %>
+    <p>No image available</p>
+  <% end %>
+<hr>
+  <p style="text-align: center;">Description: <%= @the_skin.description %></p>
+  <p style="text-align: center;">Starting Price: <%= number_to_currency(@the_skin.starting_price) %></p>
+
+  <hr>
+
+  <form action="/update_skin_description/<%= @the_skin.id %>" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+
+    <div>
+      <label for="description_box">Description</label>
+      <textarea id="description_box" name="description_value" rows="5" style="width:100%"><%= @the_skin.description %></textarea>
+    </div>
+
+    <button>Update Description</button>
+  </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 style="text-align: center;">Bid History</h2>
+  <table border="1" style="margin: 0 auto; width: 80%; text-align: center;">
+    <thead>
+      <tr>
+        <th>Bid ID</th>
+        <th>Username</th>
+        <th>Amount</th>
+        <th>Time</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @the_skin.bids.order(amount: :desc).each do |bid| %>
+        <tr>
+          <td><%= bid.id %></td>
+          <td><a href="/users/<%=bid.user.username%>"><%= bid.user.username %></a></td>
+          <td><%= number_to_currency(bid.amount) %></td>
+          <td><%= bid.created_at.strftime("%B %d, %Y %I:%M %p") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

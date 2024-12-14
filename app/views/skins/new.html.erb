@@ -1,0 +1,48 @@
+<h1 class="center-heading">Upload a New Skin</h1>
+
+<%= form_with(model: @skin, url: "/skins/create", method: :post, local: true) do |form| %>
+  <% if @skin.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@skin.errors.count, "error") %> prohibited this skin from being saved:</h2>
+      <ul>
+        <% @skin.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <h1 class="center-heading"> <%= form.label :name, "Skin Name" %>
+    <%= form.text_field :name, required: true %></h1>
+  </div>
+
+  <div class="field">
+  <h1 class="center-heading">
+    <%= form.label :description, "Description" %>
+    <%= form.text_area :description, required: true %>
+  </h1>
+  </div>
+
+  <div class="field">
+  <h1 class="center-heading">
+    <%= form.label :image_url, "Image URL" %>
+    <%= form.text_field :image_url %>
+  </h1>
+  </div>
+
+  <div class="field">
+  <h1 class="center-heading">
+    <%= form.label :starting_price, "Starting Price" %>
+    <%= form.number_field :starting_price, step: 0.01, required: true %>
+  </h1>
+  </div>
+  <h1 class="center-heading">
+  <div class="actions">
+    <%= form.submit "Upload Skin", class: "btn btn-primary" %>
+  </div>
+  </h1>
+<% end %>
+<h1 class="center-heading">
+<%= link_to "Back to Skins", "/skins", class: "btn btn-secondary" %>
+</h1>

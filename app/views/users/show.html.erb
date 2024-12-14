@@ -1,0 +1,32 @@
+<h1><%= @user.username %>'s Profile</h1>
+
+<div class="user-profile">
+
+  <p>Username: <%= @user.username %></p>
+</div>
+
+<hr>
+
+<h2>Bid Items</h2>
+<% if @bids.any? %>
+  <table border="1" cellspacing="0" cellpadding="5" style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Bid Amount</th>
+        <th>Bid Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @bids.each do |bid| %>
+        <tr>
+          <td><%= link_to bid.skin.name, skin_path(bid.skin) %></td>
+          <td><%= number_to_currency(bid.amount) %></td>
+          <td><%= bid.created_at.strftime("%B %d, %Y %I:%M %p") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <p>No bids yet!</p>
+<% end %>

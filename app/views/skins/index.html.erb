@@ -1,0 +1,21 @@
+<h1 class="center-heading">Available Skins</h1>
+<div class="skins-container">
+  <% @list_of_skins.each do |skin| %>
+    <div class="skin-card">
+      <h2><a href="/skins/<%= skin.id %>"><%= skin.name %></a></h2>
+      <% if skin.image_url.present? %>
+        <%= image_tag skin.image_url, class: "skin-image" %>
+      <% else %>
+        <p>No image available</p>
+      <% end %>
+      <p><%= skin.description %></p>
+      <p>Starting Price: <%= number_to_currency(skin.starting_price) %></p>
+      <p>Highest Bid: <%= number_to_currency(skin.highest_bid) %></p>
+
+<!--CODE-->
+      <p><%= link_to "BID NOW", new_bid_path(skin_id: skin.id) %></p>
+
+
+    </div>
+  <% end %>
+</div>
